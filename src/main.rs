@@ -10,9 +10,12 @@ fn main() {
         nomes,
         &mut usuarios
     );
-    if let Some(usuario) = usuarios.get(10){
-        println!("{}", usuario.nome);
-    } else {
-        println!("nem achamo");
-    }
+    let nome_do_caba: &str = {
+        if let Some(usuario) = usuarios.get(2) {
+            &usuario.nome
+        } else {
+            "nem achamo"
+        }
+    };
+    print!("{}",nome_do_caba);
 }
