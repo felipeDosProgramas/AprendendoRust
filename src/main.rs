@@ -1,15 +1,18 @@
 mod usuario;
 
-use usuario::{salvar_usuario, UsuarioLegal, criar_usuario, printa_usuario};
+use usuario::{UsuarioLegal, criar_todos_usuarios};
 
 fn main() {
     let nomes: Vec<&str> = vec!["sergio", "joão","maria","josé","onça"];
     let mut usuarios: Vec<UsuarioLegal> = Vec::new();
-    let mut indice: u32 = 0;
-    for nome in nomes {
-        let usuario: UsuarioLegal = criar_usuario(indice, nome);
-        printa_usuario(&usuario);
-        salvar_usuario(usuario, &mut usuarios);
-        indice += 1;
+    criar_todos_usuarios(
+        0,
+        nomes,
+        &mut usuarios
+    );
+    if let Some(usuario) = usuarios.get(10){
+        println!("{}", usuario.nome);
+    } else {
+        println!("nem achamo");
     }
 }
